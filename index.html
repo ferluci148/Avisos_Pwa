@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Ejemplo de HTML5">
+  <meta name="keywords" content="HTML5, CSS3, JavaScript">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+  <link rel="manifest" href="manifest.json" />
+  
+  <link rel="shortcut icon" href="./imagenes/Logo.png">
+  <title>Plantilla</title>
+
+  <!--                             TABLA DATOS    https://frappe.io/datatable/docs     -->
+  <link href="https://unpkg.com/frappe-datatable@0.0.5/dist/frappe-datatable.min.css" rel="stylesheet">
+
+  <script src="https://unpkg.com/sortablejs@1.7.0/Sortable.min.js"></script>
+  <script src="https://unpkg.com/clusterize.js@0.18.0/clusterize.min.js"></script>
+  <!-- include the lib -->
+  <script src="https://unpkg.com/frappe-datatable@0.0.5/dist/frappe-datatable.min.js"></script>
+
+
+  <!-- initialize DataTable -->
+  <!--                             TABLA DATOS -->
+
+  <!--                             Ventana de Mensaje  -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+  <!--                             Ventana de Mensaje  -->
+  <style>
+    .imagenRegistro {
+      width: 50px;
+      height: 50px;
+      border: 2px blue solid;
+    }
+
+    .data-table-cell {
+      width: auto;
+    }
+
+    /* .data-table-row{width:50px;height:70px;}*/
+
+    .data-table-row {
+      background-color: rgb(165, 165, 156);
+    }
+
+    /* ********************* ACORDEON */
+ 
+    /*  form {
+    
+      display: none;
+    }
+    
+  .acordeon:hover form {
+ 
+      display: block;
+      height: auto;
+      margin: 20px;
+      transition:
+       
+        width 1s ease-out,
+        font-size 1s ease-out,
+        line-height 2s ease-out,
+        height 1s ease-out 1s,
+        transform 1s ease-out 2s;
+
+
+    }*/
+                                                  /* ********************* ACORDEON */
+    /*  FORMULARIO*/
+    .formulario {
+      display: grid;
+      grid-template-columns: 1fr  ;
+       grid-gap: 1.25rem; 
+      column-gap: 20px;
+      display: none;
+    }
+      label {
+        display: block;
+      }
+     
+      button,
+      input ,
+      textarea {
+       width:90%; 
+        padding: 1rem;
+        border: 1px solid olive ;
+        margin-left: 10px;
+      }
+      input[type='checkbox'] {
+
+        width:  25px;
+        height: 25px;
+      }
+      input[type='button'] {
+
+        margin-right: 7%;
+        margin-top: 2%;
+     
+        width: 150px;
+      }
+      textarea {
+        resize: none;
+      }
+                                                                    /*  FORMULARIO*/
+  </style>
+
+
+  <link rel="stylesheet" href="./css/plantilla.css">
+</head>
+
+<body>
+  <div id="contenedor">
+    <header id="cabecera">
+
+
+      <picture style="margin: 5px;">
+        <source media="(min-width: 500px)" srcset="imagenes/LogoPlantilla.png">
+        <img id="imagenTitulo" src="imagenes/Logop.png" alt="Logo CIFP">
+      </picture>
+      <h1 id="titulo">Avisos por Mantenimiento</h1>
+
+
+    </header>
+    <nav id="menu">
+      <input type="checkbox" id="menuopciones">
+      <label for="menuopciones"> ☰ </label>
+      <ul>
+        <li id="FormularioAviso">Crear Aviso</li>
+        <li>Mantenedores</li>
+        <li>Clientes</li>
+        <li id="ConsultaAvisos">Consulta Avisos</li>
+      </ul>
+
+    </nav>
+    <section id="seccion">
+      <article>
+        <header>
+          <hgroup>
+            <h1>Consulta Avisos </h1>
+
+          </hgroup>
+
+        </header>
+
+        <!--                             TABLA DATOS                               -->
+        <div id="datatable"></div>
+
+        <!--                             TABLA DATOS          -->
+        <footer>
+          <p>SI hay conexión a internet se cargan dede la BD. del hosting por medio de PHP</p>
+        </footer>
+      </article>
+      <article class="acordeon">
+        <header>
+          <hgroup>
+            <h1>Crear Aviso</h1>
+            <form class="formulario" id="formulario">
+              <p>
+                <label>Id Cliente</label>
+                <input type="text" id="cCliente" required />
+              </p>
+              <p>
+                <label>Descripción</label>
+                <textarea id="cDescripcion"> </textarea>
+              </p>
+              <p>
+                <label>Fecha</label>
+                <input type="date" id="cFecha" />
+              </p>
+              <p>
+                <label>Hora</label>
+                <input type="datetime-local" id="cHora" />
+              </p>
+              <p>
+                <label>Realizado
+                <input type="checkbox" id="cRealizado" /></label>
+                <br>
+              </p>
+              <p>
+                <label>Id Técnico</label>
+                <input type="text" id="cTecnico" required />                
+              </p>
+              <p style="text-align:left ">
+              <input type="button" value="Grbar Aviso" id="GrabarAviso">
+            </p>
+            </form>
+          </hgroup>
+
+        </header>
+        <footer>
+          <i>Solo puede crear avisos un usuario de tipo administrador</i>
+        </footer>
+      </article>
+    </section>
+    <aside id="columna">
+      <blockquote><a href="https://programmerclick.com/article/12851322642/">Indexed Bd</a></blockquote>
+      <blockquote><a
+          href="https://www.freecodecamp.org/espanol/news/como-construir-una-pwa-desde-cero-con-html-css-y-javascript/">PWA</a>
+      </blockquote>
+    </aside>
+    <footer id="pie">
+      Desarrollo de Aplicaciones Web(DAW) © CIFP Santa Catalina
+
+
+      <script src="./js/app.js"></script>
+      <script src="./js/bd.js"></script>
+</body>
+
+</html>
